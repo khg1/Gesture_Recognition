@@ -19,7 +19,7 @@ A five-stage Finite State Machine (FSM) is used to model the dynamic behavior an
 
 1. **IDLE_STATE**  
    Default state after a reset; it clears the LCD, turns off LEDs, and waits for the user to press the button.<br>
-   ![IDLE STATE](IMG_0277.HEIC)
+   <img src="IMG_0277.jpeg" alt="IDLE STATE" width="100" height="100">
 
 3. **RECORDKEY_STATE**  
    Samples the output data from the gyroscope at a sampling rate of 25 Hz (or 40 ms) using a timer and stores it as a passkey in the buffer. The progress is indicated by a progress bar displayed on the LCD, and successful completion is indicated by turning on the green LED.
