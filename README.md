@@ -16,17 +16,19 @@ Three distance matrices are constructed, and the optimal alignment is determined
 
 A five-stage Finite State Machine (FSM) is used to model the dynamic behavior and transition between states depending on the user input captured through a physical button on the discovery kit.
 
-1. **IDLE_STATE**  
-   Default state after a reset; it clears the LCD, turns off LEDs, and waits for the user to press the button.
 
-2. **RECORDKEY_STATE**  
+1. **IDLE_STATE**  
+   Default state after a reset; it clears the LCD, turns off LEDs, and waits for the user to press the button.<br>
+   ![IDLE STATE](IMG_0277.HEIC)
+
+3. **RECORDKEY_STATE**  
    Samples the output data from the gyroscope at a sampling rate of 25 Hz (or 40 ms) using a timer and stores it as a passkey in the buffer. The progress is indicated by a progress bar displayed on the LCD, and successful completion is indicated by turning on the green LED.
 
-3. **ENTERKEY_STATE**  
+4. **ENTERKEY_STATE**  
    Similar functionality as `RECORDKEY_STATE`; however, the entry buffer is filled with the gesture attempted. The red LED is turned on for successful completion and prompts the user to transition states by pressing the button.
 
-4. **PROCESS_STATE**  
+5. **PROCESS_STATE**  
    The raw data from the sensor is converted to degrees per second according to sensitivity. The `DTW` and `back_track` functions are called to calculate threshold values. After comparing values for all three axes, test pass (unlock) or test fail (locked) messages are displayed on the LCD.
 
-5. **RETRY_STATE**  
+6. **RETRY_STATE**  
    If the gestures don't match, it allows the user to reattempt unlocking the device.
